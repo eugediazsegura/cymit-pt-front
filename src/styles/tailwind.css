@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+   --color-main-100: #eee;
+   --color-blueish: rgb(0.72 0.11 178);
+   --font-gabarito: Gabarito, sans-serif
+   /** rgb(0.72 0.11 178); */ 
+}
