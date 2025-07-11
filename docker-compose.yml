@@ -3,9 +3,10 @@ services:
     container_name: app
     image: node:22
     working_dir: /app
+    command: /bin/sh -c "npm install --include=dev && npm run dev" # esto es para no tener que entrar a la terminal
+    ports:
+      - 8010:8010
     volumes:
       - .:/app
     tty: true
     stdin_open: true
-    ports:
-      - 8010:8010
