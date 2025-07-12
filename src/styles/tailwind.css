@@ -11,3 +11,12 @@
    --font-gabarito: Gabarito, sans-serif
    /** rgb(0.72 0.11 178); */ 
 }
+
+.banner-parallax {
+    background-image: url('../assets/banner.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    position: relative;
+}
