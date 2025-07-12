@@ -3,6 +3,7 @@
 @theme {
    --color-purple-dark: #6944B2;
    --color-purple-light: #C2BAE3;
+   --color-purple-ultralight:#c2bae373;
    --color-pink-dark: #BE3150;
    --color-pink-light: #DE5170;
    --color-yellow: #DE5170;
@@ -11,3 +12,13 @@
    --font-gabarito: Gabarito, sans-serif
    /** rgb(0.72 0.11 178); */ 
 }
+
+.banner-parallax {
+    background-image: url('../assets/banner.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    position: relative;
+}
+
