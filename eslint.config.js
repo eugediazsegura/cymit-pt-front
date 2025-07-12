@@ -1,39 +1,30 @@
 import js from '@eslint/js'
-import globals from 'globals'
+import reactPlugin from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-
 export default [
-  { ignores: ['dist'] },
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        ecmaFeatures: { tsx: true },
-        sourceType: 'module',
-      },
+    {
+        plugins: {
+            react: reactPlugin
+        },
+        rules: {
+            ...reactPlugin.configs['jsx-runtime'].rules,
+        },
+        settings: {
+            react: {
+                version: 'detect', // para detectar la versión de react en caso de error
+            }
+        }
     },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+    {
+        plugins: {
+            'react-hooks': reactHooks
+        },
+        rules: {
+            ...reactHooks.configs.recommended.rules
+        }
     },
-    // rules: {
-    //   ...js.configs.recommended.rules,
-    //   ...reactHooks.configs.recommended.rules,
-    //   'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-    //   'react-refresh/only-export-components': [
-    //     'warn',
-    //     { allowConstantExport: true },
-    //   ],
-    // },
-  },
+    {
+        ignores: ['./dist/*']
+    },
+    js.configs.recommended
 ]
