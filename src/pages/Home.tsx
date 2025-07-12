@@ -5,7 +5,7 @@ import { BannerParallax } from "@/components/ui/BannerParallax";
 
 const Home = () => {
     return (
-        <div className="height-simulate">
+        <div>
             <BannerParallax />
             <div className=" flex justify-between my-14">
                 <Sidebar />
