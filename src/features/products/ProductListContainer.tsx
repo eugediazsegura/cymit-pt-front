@@ -4,6 +4,8 @@ import { ButtonSecondary } from "@/components/ui/ButtonSecondary";
 import { useProductStore } from "./productStore.";
 import API from "@/api/services";
 import { useEffect } from "react";
+import { ProductSkeleton } from "@/components/ui/skeletons/ProductSkeleton";
+import { FilterSkeleton } from "@/components/ui/skeletons/FilterSkeleton";
 
 export const ProductListContainer = () => {
     const { products,
@@ -37,25 +39,27 @@ export const ProductListContainer = () => {
     return (
         <div className="products-container  flex flex-col items-center">
             <div className=" flex justify-between my-14">
-                <Sidebar />
+                {!products || loading
+                    ? <FilterSkeleton />
+                    : <Sidebar />
+                }
                 <div className="w-full grid grid-cols-2 lg:grid-cols-4 place-items-center gap-4">
-                    {loading ? (
-                        Array(products ? products.length : 16).fill(null).map((_, index) => (
+                    {!products || loading ? (
+                        Array(products?.length || 16).fill(null).map((_, index) => (
                             <div className="product-skeleton" key={index}>
-
+                                <ProductSkeleton />
                             </div>
                         ))
                     ) : (
                         products.map((product) => (
-                            <div key={product.id} className="w-full">
+                            <div key={product.id} className="w-full m-4">
                                 <ProductCard product={product} addToCart={() => { }} />
                             </div>
                         ))
                     )}
                 </div>
             </div>
-            { }
-            <ButtonSecondary onClick={handleLoadMore} data="View more products" />
+            {products?.length > 0 && <ButtonSecondary onClick={handleLoadMore} data="View more products" />}
         </div>
     )
 }

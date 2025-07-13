@@ -9,16 +9,15 @@ type ProductCardProps = {
 
 export const ProductCard = ({ product, addToCart }: ProductCardProps) => {
     return (
-        <div className="flex flex-col items-center product-card relative hover:bg-purple-ultralight rounded-2xl p-3 group">
+        <div className="flex flex-col items-center product-card relative lg:hover:bg-purple-ultralight rounded-2xl p-3 group">
             <div className="wishlist-icon opacity-0 group-hover:opacity-100 absolute top-5 right-5">
                 <button><img src={heart} alt="wishlist icon" /></button>
             </div>
-
             {product.discountPercentage > 10 && (
                 <div className="float-discount bg-pink-light rounded-full w-8 h-8 flex items-center justify-center absolute top-px left-px">
                     <span className="text-xs lg:text-sm font-bold text-white">{formatDiscountedPrice(product.discountPercentage)}%</span>
                 </div>)}
-            <div className="product-image border-2 border-purple-light rounded-2xl w-fit bg-white">
+            <div className="product-image border-2 border-purple-light rounded-2xl bg-white w-28 h-28 md:w-34 md:h-34 lg:w-48 lg:h-48 xl:w-50 xl:h-50 2xl:w-58 2xl:h-58">
                 <img src={product.thumbnail} alt="image product" />
             </div>
             <div className="product-info mt-4  w-30 md:w-36 lg:w-50 xl:w-52 2xl:w-60">

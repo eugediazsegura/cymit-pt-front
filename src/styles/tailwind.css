@@ -18,7 +18,13 @@
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    height: 50vh;
+    height: 20rem;
+    width: 100%;
     position: relative;
 }
 
+@media (max-width: 768px) {
+  .banner-parallax {
+    background-attachment: scroll; 
+  }
+}
