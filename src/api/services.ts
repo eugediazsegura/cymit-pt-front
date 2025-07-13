@@ -21,13 +21,15 @@ const GET = async( url: string, type: string ) => {
 }
 
 class Product {
-    all = async () => {
-        return await GET(`${API_URL}/products?limit=0`, "all");
-    }
-
     paginated = async (page: number, limit: number) => {
         const skip = (page - 1) * limit;
-        return await GET(`${API_URL}/products?limit=${limit}&page=${page}&skip=${skip}`, "paginated");
+        const response = await GET(`${API_URL}/products?limit=${limit}&page=${page}&skip=${skip}`, "paginated");
+        const {products,total} = response;
+        return products
     }
-
 }
+
+
+export default class API{
+    static Product:Product = new Product();
+} 
