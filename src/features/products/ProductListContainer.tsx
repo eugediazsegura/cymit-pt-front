@@ -73,7 +73,7 @@ export const ProductListContainer = () => {
                         ) : (
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-4">
                                 {products.map((product) => (
-                                    <div key={product.id} className="w-full m-4">
+                                    <div key={product.id} className="w-full m-4 p-6">
                                         <ProductCard product={product} />
                                     </div>
                                 ))}
