@@ -1,18 +1,9 @@
-import { useState, useEffect, useMemo } from 'react'
+import {  useEffect, useMemo } from 'react'
 import type { Product } from '@/types'
+import { useFavsStore } from '@/store/FavsStore'
 
-export type Favs = {
-    favs: Product[],
-    addToFavs: (item: Product) => void,
-    removeFromFavs: (id: Product['id']) => void,
-}
-export const useFavs = (): Favs => {
-    const initialFavs = () => {
-        const localStorageFavs = localStorage.getItem('favs')
-        return localStorageFavs ? JSON.parse(localStorageFavs) : []
-    }
-
-    const [favs, setFavs] = useState(initialFavs)
+export const useFavs = () => {
+    const { favs, setFavs, clearFavs} = useFavsStore()
 
     useEffect(() => {
         localStorage.setItem('favs', JSON.stringify(favs))
@@ -27,13 +18,14 @@ export const useFavs = (): Favs => {
     }
 
     function removeFromFavs(id: Product['id']) {
-        setFavs((prevFavs: Product[]) => prevFavs.filter(Product => Product.id !== id))
+        setFavs(favs.filter(product => product.id !== id))
     }
 
     return {
         favs,
         addToFavs,
         removeFromFavs,
+        clearFavs
     }
 
 }
