@@ -33,14 +33,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             <div className="product-image border-2 border-purple-light rounded-2xl bg-white w-28 h-28 md:w-34 md:h-34 lg:w-48 lg:h-48 xl:w-50 xl:h-50 2xl:w-58 2xl:h-58">
                 <img src={product.thumbnail} alt="image product" />
             </div>
-            <div className="product-info mt-4  w-30 md:w-36 lg:w-50 xl:w-52 2xl:w-60">
+            <div className="product-info mt-4 flex flex-col  w-30 md:w-36 lg:w-50 xl:w-52 2xl:w-60">
                 <div className="extra-info flex justify-between">
                     <span className="text-sm category text-stone-400"> {product.category}</span>
                     <span className="text-sm rating font-bold before:content-['⭐']">{product.rating}</span>
                 </div>
                 <p className="min-h-[4rem] text-sm/4 md:text-base/4 py-4">{product.title}</p>
                 <p className="text-xl font-bold text-pink-light py-2">€{product.price}</p>
-                <button onClick={() => addToCart(product)} className="bg-pink-light text-white py-2 rounded-full w-full cursor-pointer hover:bg-pink-dark">Add to cart</button>
+                <button onClick={() => addToCart(product)} className="bg-pink-light text-white self-center py-2 rounded-full w-fit p-8 mt-4 cursor-pointer hover:bg-pink-dark">Add to cart</button>
             </div>
         </div>
     )

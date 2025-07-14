@@ -14,7 +14,7 @@ export const CategoriesFilter = () => {
 
     };
 
-    const handleUrlChange = async (e: React.ChangeEvent<HTMLInputElement>, categorySelected: Category) => {
+    const handleCategoryFilter = async (e: React.ChangeEvent<HTMLInputElement>, categorySelected: Category) => {
         const url = e.target.value;
         setSelectedCategory(categorySelected);
         const response = await API.Product.paginated(1, 16, url);
@@ -42,7 +42,7 @@ export const CategoriesFilter = () => {
                                 name="category"
                                 id={category.id}
                                 value={category.url}
-                                onChange={(e) => handleUrlChange(e, category)}
+                                onChange={(e) => handleCategoryFilter(e, category)}
                                 className="mr-2 accent-purple-dark " />
                             <label htmlFor="category">{category.name}</label>
                         </div>

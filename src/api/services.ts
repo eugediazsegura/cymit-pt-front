@@ -27,6 +27,10 @@ class Product {
         const response = await GET(`${fetchUrl}?limit=${limit}&page=${page}&skip=${skip}`, "paginated");
         return response
     }
+    search = async (query: string) => {
+        const response = await GET(`${API_URL}/products/search?q=${query}`, "search");
+        return response;
+    }
 }
 
 class Category {
