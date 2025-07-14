@@ -1,7 +1,10 @@
+import { ProductPageContent } from "@/components/product/ProductPageContent";
+
 const ProductPage = () => {
-  return (
-    <div>ProductPage</div>
-  )
+    return (
+        <ProductPageContent />
+
+    )
 }
 
 export default ProductPage;

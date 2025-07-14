@@ -8,7 +8,7 @@ export const Sidebar = () => {
     const { categories, loadingCategories } = useCategoriesStore();
 
     return (
-        <div className="hidden lg:block sidebar w-xl pl-4 pr-20">
+        <div className="hidden lg:block sidebar lg:w-md 2xl:w-xl pl-4 pr-20">
             {!categories || loadingCategories ?
                 <FilterSkeleton /> :
                 <CategoriesFilter />
