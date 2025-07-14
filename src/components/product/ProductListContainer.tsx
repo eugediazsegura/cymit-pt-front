@@ -8,7 +8,7 @@ import { ButtonSecondary } from "@/components/ui/ButtonSecondary";
 import { ProductSkeleton } from "@/components/ui/skeletons/ProductSkeleton";
 import { FilterSkeleton } from "@/components/ui/skeletons/FilterSkeleton";
 import { FilterButton } from "@/components/filters/FilterButton";
-import { ProductsNotFound } from "@/features/products/ProductsNotFound";
+import { ProductsNotFound } from "@/components/product/ProductsNotFound";
 
 export const ProductListContainer = () => {
     const { products,
@@ -73,7 +73,7 @@ export const ProductListContainer = () => {
                         ) : (
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-4">
                                 {products.map((product) => (
-                                    <div key={product.id} className="w-full m-4 p-6">
+                                    <div key={product.id} className="w-40 md:w-40 lg:w-54 xl:w-56 2xl:w-62">
                                         <ProductCard product={product} />
                                     </div>
                                 ))}
