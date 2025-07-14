@@ -5,7 +5,7 @@ interface ModalCartProps {
     onClose: () => void
 }
 export default function ModalCart({ onClose }: ModalCartProps) {
-    const { removeFromCart, cart, cartTotal, increaseQuantity, decreaseQuantity } = useCart();
+    const { removeFromCart, cart, cartTotal, increaseQuantity, decreaseQuantity, clearCart } = useCart();
     const onQtyChange = (e: React.ChangeEvent<HTMLInputElement>, currentQty: number, productId: number) => {
         const value = parseInt(e.target.value) || 0;
         if (value == 0) {
@@ -31,7 +31,7 @@ export default function ModalCart({ onClose }: ModalCartProps) {
                                     <img src={product.thumbnail} alt="image product" />
                                 </div>
                                 <input min={0} type="number" name="quantity" id="quantity" value={product.quantity} className="w-12" onChange={(e) => onQtyChange(e, product.quantity, product.id)} />
-                                <p className=" text-xs md:text-sm w-28 font-normal ">{product.title}</p>
+                                <p className=" text-xs md:text-sm w-28 font-normal">{product.title}</p>
                                 <p className="text-sm  font-bold">€{product.price}</p>
                                 <IconButton onClick={() => removeFromCart(product.id)} icon={TrashBinIcon} ariaLabel="Remove product from cart"></IconButton>
                             </li>
@@ -42,8 +42,8 @@ export default function ModalCart({ onClose }: ModalCartProps) {
                         <span>€{cartTotal}</span>
                     </div>
                     <div className="flex justify-center mt-4 flex-col gap-2 px-6">
-                        <button className="bg-pink-light text-white py-2 px-4 rounded-full w-full hover:bg-pink-dark">Buy Now</button>
-                        <button className="bg-white border border-pink-light text-pink-light py-2 px-4 rounded-full w-full hover:bg-pink-dark">Remove all items</button>
+                        <button className="bg-pink-light text-white py-2 px-4 rounded-full w-full hover:bg-pink-dark cursor-pointer">Buy Now</button>
+                        <button className="bg-white border border-pink-light text-pink-light py-2 px-4 rounded-full w-full hover:border-pink-dark hover:text-pink-dark cursor-pointer" onClick={clearCart}>Remove all items</button>
                     </div>
                 </>
             )}

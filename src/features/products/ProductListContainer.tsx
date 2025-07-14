@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { ButtonSecondary } from "@/components/ui/ButtonSecondary";
 import { ProductSkeleton } from "@/components/ui/skeletons/ProductSkeleton";
 import { FilterSkeleton } from "@/components/ui/skeletons/FilterSkeleton";
+import { FilterButton } from "@/components/filters/FilterButton";
 
 export const ProductListContainer = () => {
     const { products,
@@ -46,32 +47,35 @@ export const ProductListContainer = () => {
     };
 
     return (
-        <div className="products-container  flex flex-col items-center">
-            <div className=" flex justify-between my-14">
-                {!products || loading ? (
-                    <FilterSkeleton />) : (
-                    <Sidebar />
-                )
-                }
-                <div className="w-full grid grid-cols-2 lg:grid-cols-4 place-items-center gap-4">
+        <div className="flex flex-col ">
+            <FilterButton />
+            <div className="products-container  flex flex-col items-center">
+                <div className=" flex justify-between my-14">
                     {!products || loading ? (
-                        Array(products?.length || 16).fill(null).map((_, index) => (
-                            <div className="product-skeleton" key={index}>
-                                <ProductSkeleton />
-                            </div>
-                        ))
-                    ) : (
-                        products.map((product) => (
-                            <div key={product.id} className="w-full m-4">
-                                <ProductCard product={product} />
-                            </div>
-                        ))
-                    )}
+                        <FilterSkeleton />) : (
+                        <Sidebar />
+                    )
+                    }
+                    <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-4">
+                        {!products || loading ? (
+                            Array(products?.length || 16).fill(null).map((_, index) => (
+                                <div className="product-skeleton" key={index}>
+                                    <ProductSkeleton />
+                                </div>
+                            ))
+                        ) : (
+                            products.map((product) => (
+                                <div key={product.id} className="w-full m-4">
+                                    <ProductCard product={product} />
+                                </div>
+                            ))
+                        )}
+                    </div>
                 </div>
+                {products.length > 0 && visibleProducts < productTotal && (
+                    <ButtonSecondary onClick={handleLoadMore} data="View more products" />
+                )}
             </div>
-            {products.length > 0 && visibleProducts < productTotal && (
-                <ButtonSecondary onClick={handleLoadMore} data="View more products" />
-            )}
         </div>
     )
 }

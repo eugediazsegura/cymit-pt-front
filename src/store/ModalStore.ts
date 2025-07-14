@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-type ModalType = 'cart' | 'favorites' | null // escalable para luego agregar otros tipos
+type ModalType = 'cart' | 'favorites' | 'filter' | null // escalable para luego agregar otros tipos
 
 type ModalStore = {
     modal: ModalType
