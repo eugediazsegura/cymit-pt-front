@@ -1,28 +1,9 @@
-import { useState, useEffect, useMemo } from 'react'
-import type { Product } from '@/types'
-interface CartItem extends Product {
-    quantity: number
-}
+import { useEffect, useMemo } from 'react'
+import type { CartItem, Product } from '@/types'
+import { useCartStore } from '@/store/CartStore';
 
-export type Cart = {
-    cart: CartItem[],
-    addToCart: (item: Product) => void,
-    removeFromCart: (id: Product['id']) => void,
-    decreaseQuantity: (id: Product['id']) => void,
-    increaseQuantity: (id: Product['id']) => void,
-    clearCart: () => void,
-    isEmpty: boolean,
-    cartTotal: number
-}
-export const useCart = (): Cart => {
-    const initialCart = () => {
-        const localStorageCart = localStorage.getItem('cart')
-        return localStorageCart ? JSON.parse(localStorageCart) : []
-    }
-
-    const [cart, setCart] = useState(initialCart)
-
-    const MIN_ITEMS = 1
+export const useCart = () => {
+    const { cart, setCart, clearCart } = useCartStore();
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
@@ -35,19 +16,17 @@ export const useCart = (): Cart => {
             updatedCart[itemExists].quantity++
             setCart(updatedCart)
         } else {
-            const newItem: CartItem = { ...item, quantity: 1 }
-            //item.quantity = 1
-            setCart([...cart, newItem])
+            setCart([...cart, { ...item, quantity: 1 }]);
         }
     }
 
     function removeFromCart(id: Product['id']) {
-        setCart((prevCart: CartItem[]) => prevCart.filter(Product => Product.id !== id))
+        setCart(cart.filter(product => product.id !== id))
     }
 
     function decreaseQuantity(id: Product['id']) {
         const updatedCart = cart.map((item: CartItem) => {
-            if (item.id === id && item.quantity > MIN_ITEMS) {
+            if (item.id === id && item.quantity > 1 ) {
                 return {
                     ...item,
                     quantity: item.quantity - 1
@@ -71,9 +50,6 @@ export const useCart = (): Cart => {
         setCart(updatedCart)
     }
 
-    function clearCart() {
-        setCart([])
-    }
 
     // State Derivado
     const isEmpty = useMemo(() => cart.length === 0, [cart])
@@ -89,5 +65,4 @@ export const useCart = (): Cart => {
         isEmpty,
         cartTotal
     }
-
 }

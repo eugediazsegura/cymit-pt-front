@@ -40,7 +40,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                 </div>
                 <p className="min-h-[4rem] text-sm/4 md:text-base/4 py-4">{product.title}</p>
                 <p className="text-xl font-bold text-pink-light py-2">€{product.price}</p>
-                <button onClick={() => addToCart(product)} className="bg-pink-light text-white py-2 rounded-full w-full hover:bg-pink-dark">Add to cart</button>
+                <button onClick={() => addToCart(product)} className="bg-pink-light text-white py-2 rounded-full w-full cursor-pointer hover:bg-pink-dark">Add to cart</button>
             </div>
         </div>
     )

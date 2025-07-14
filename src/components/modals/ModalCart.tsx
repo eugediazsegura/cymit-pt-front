@@ -19,20 +19,20 @@ export default function ModalCart({ onClose }: ModalCartProps) {
         }
     }
     return (
-        <div className="bg-white p-6 pb-2 rounded-md shadow-md w-[100vw] md:w-[400px] max-h-[90vh] overflow-y-auto z-60">
+        <div className="bg-white p-6  rounded-md shadow-md w-[100vw] md:w-[400px] max-h-[90vh] overflow-y-auto z-60">
             {cart.length === 0 ? (
                 <p>No hay productos en el carrito.</p>
             ) : (
                 <>
                     <ul className="space-y-3">
                         {cart.map((product) => (
-                            <li key={product.id} className="border-b pb-2 flex items-center justify-between">
+                            <li key={product.id} className="border-b border-purple-dark pb-2 flex items-center justify-between">
                                 <div className="product-image border-2 border-purple-light rounded-2xl bg-white w-12 h-12 md:w-20 md:h-20">
                                     <img src={product.thumbnail} alt="image product" />
                                 </div>
                                 <input min={0} type="number" name="quantity" id="quantity" value={product.quantity} className="w-12" onChange={(e) => onQtyChange(e, product.quantity, product.id)} />
-                                <p className="font-medium text-xs md:text-base">{product.title}</p>
-                                <p className="text-sm text-gray-600">€{product.price}</p>
+                                <p className=" text-xs md:text-sm w-28 font-normal ">{product.title}</p>
+                                <p className="text-sm  font-bold">€{product.price}</p>
                                 <IconButton onClick={() => removeFromCart(product.id)} icon={TrashBinIcon} ariaLabel="Remove product from cart"></IconButton>
                             </li>
                         ))}
