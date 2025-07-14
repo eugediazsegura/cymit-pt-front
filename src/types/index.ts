@@ -6,4 +6,12 @@ export type Product = {
     discountPercentage: number;
     thumbnail: string;
     rating: number;
+    favorite?: boolean;
+};
+
+export type Category = {
+    id: string;
+    slug: string;
+    name: string;
+    url: string;
 };
