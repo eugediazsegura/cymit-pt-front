@@ -1,6 +1,7 @@
 import TrashBinIcon from "@/assets/icons/trashbin.svg";
 import { IconButton } from "@/components/ui/IconButton";
 import { useCart } from "@/hooks/useCart";
+import { InputQty } from "../ui/inputQty";
 interface ModalCartProps {
     onClose: () => void
 }
@@ -30,7 +31,7 @@ export default function ModalCart({ onClose }: ModalCartProps) {
                                 <div className="product-image border-2 border-purple-light rounded-2xl bg-white w-12 h-12 md:w-20 md:h-20">
                                     <img src={product.thumbnail} alt="image product" />
                                 </div>
-                                <input min={0} type="number" name="quantity" id="quantity" value={product.quantity} className="w-12" onChange={(e) => onQtyChange(e, product.quantity, product.id)} />
+                                <InputQty quantity={product.quantity} productId={product.id} />
                                 <p className=" text-xs md:text-sm w-28 font-normal">{product.title}</p>
                                 <p className="text-sm  font-bold">€{product.price}</p>
                                 <IconButton onClick={() => removeFromCart(product.id)} icon={TrashBinIcon} ariaLabel="Remove product from cart"></IconButton>
