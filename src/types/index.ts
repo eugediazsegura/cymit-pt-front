@@ -20,19 +20,39 @@ export type CartItem = Product & {
     quantity: number;
 };
 
+
 export type ProductComplete = Product & {
+    availabilityStatus: string;
+    brand: string;
+    category: string;
     description: string;
-    tags: string[];
+    dimensions: {
+        depth: number;
+        height: number;
+        width: number;
+    };
+    images: string[];
+    meta: {
+        createdAt: string;
+        updatedAt: string;
+        barcode: string;
+        qrCode: string;
+    };
+    minimumOrderQuantity: number;
+    price: number;
+    rating: number;
+    returnPolicy: string;
+    reviews: Review[];
+    shippingInformation: string;
     sku: string;
-    weight: string;
     stock: number;
-    width: number;
-    height: number;
-    length: number;
-    warrantuInfo: string;
-    shippingInfo: string;
-    reviews: number;
+    tags: string[];
+    thumbnail: string;
+    title: string;
+    warrantyInformation: string;
+    weight: number;
 }
+
 
 export type Review = {
     id: number;

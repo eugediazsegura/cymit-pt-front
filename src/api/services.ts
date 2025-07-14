@@ -17,7 +17,6 @@ const GET = async (url: string, type: string) => {
     } catch (error) {
         console.error(error);
     }
-
 }
 
 class Product {
@@ -29,6 +28,10 @@ class Product {
     }
     search = async (query: string) => {
         const response = await GET(`${API_URL}/products/search?q=${query}`, "search");
+        return response;
+    }
+    single = async (id: string) => {
+        const response = await GET(`${API_URL}/products/${id}`, "single");
         return response;
     }
 }
