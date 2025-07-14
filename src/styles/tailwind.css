@@ -9,7 +9,8 @@
    --color-yellow: #DE5170;
    --color-white: #FFFFFF;
    --color-black: #000000;
-   --font-gabarito: Gabarito, sans-serif
+   --font-gabarito: Gabarito, sans-serif;
+   --color-modal-background: #00000080;
    /** rgb(0.72 0.11 178); */ 
 }
 
@@ -18,7 +19,13 @@
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    height: 50vh;
+    height: 20rem;
+    width: 100%;
     position: relative;
 }
 
+@media (max-width: 768px) {
+  .banner-parallax {
+    background-attachment: scroll; 
+  }
+}

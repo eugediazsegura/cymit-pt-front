@@ -1,5 +1,5 @@
 import { BannerParallax } from "@/components/ui/BannerParallax";
-import { ProductListContainer } from "@/features/ProductListContainer";
+import { ProductListContainer } from "@/features/products/ProductListContainer";
 
 const Home = () => {
     return (
