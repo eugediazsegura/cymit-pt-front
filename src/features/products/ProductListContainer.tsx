@@ -8,6 +8,7 @@ import { ButtonSecondary } from "@/components/ui/ButtonSecondary";
 import { ProductSkeleton } from "@/components/ui/skeletons/ProductSkeleton";
 import { FilterSkeleton } from "@/components/ui/skeletons/FilterSkeleton";
 import { FilterButton } from "@/components/filters/FilterButton";
+import { ProductsNotFound } from "@/features/products/ProductsNotFound";
 
 export const ProductListContainer = () => {
     const { products,
@@ -50,25 +51,33 @@ export const ProductListContainer = () => {
         <div className="flex flex-col ">
             <FilterButton />
             <div className="products-container  flex flex-col items-center">
-                <div className=" flex justify-between my-14">
+                <div className=" flex w-full justify-between my-14">
                     {!products || loading ? (
                         <FilterSkeleton />) : (
                         <Sidebar />
                     )
                     }
-                    <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-4">
-                        {!products || loading ? (
-                            Array(products?.length || 16).fill(null).map((_, index) => (
-                                <div className="product-skeleton" key={index}>
-                                    <ProductSkeleton />
-                                </div>
-                            ))
+                    <div className="w-full">
+                        {loading ? (
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-4">
+                                {Array(16).fill(null).map((_, index) => (
+                                    <div className="product-skeleton" key={index}>
+                                        <ProductSkeleton />
+                                    </div>
+                                ))}
+                            </div>
+                        ) : products && products.length === 0 && !loading ? (
+                            <div className="flex justify-center items-center w-full py-20">
+                                <ProductsNotFound />
+                            </div>
                         ) : (
-                            products.map((product) => (
-                                <div key={product.id} className="w-full m-4">
-                                    <ProductCard product={product} />
-                                </div>
-                            ))
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-4">
+                                {products.map((product) => (
+                                    <div key={product.id} className="w-full m-4">
+                                        <ProductCard product={product} />
+                                    </div>
+                                ))}
+                            </div>
                         )}
                     </div>
                 </div>
