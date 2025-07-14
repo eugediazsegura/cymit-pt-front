@@ -1,16 +1,24 @@
 import type { Product } from '@/types'
-import { formatDiscountedPrice } from "@/features/products/utils"
+import { formatDiscountedPrice } from "@/common/utils"
 import { ButtonAddToCart } from "../ui/ButtonAddToCart"
 import { ButtonFavorite } from "../ui/ButtonFavorite"
+import { useNavigate } from 'react-router-dom'
+
 
 type ProductCardProps = {
     product: Product
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+    const navigate = useNavigate();
+
+    const handleClick = async (id: number) => {
+        navigate(`/product/${id}`);
+    }
 
     return (
-        <div className="flex flex-col items-center product-card relative lg:hover:bg-purple-ultralight rounded-2xl p-3 group">
+        <div onClick={() => handleClick(product.id)}
+            className="product flex flex-col items-center product-card relative lg:hover:bg-purple-ultralight rounded-2xl p-3 group cursor-pointer">
             <div className="wishlist-icon opacity-0 group-hover:opacity-100 absolute top-5 right-5">
                 <ButtonFavorite product={product} />
             </div>

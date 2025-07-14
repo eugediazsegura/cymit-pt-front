@@ -1,4 +1,4 @@
-import type { TabItem } from '@/components/product/types';
+import type { TabItem } from '@/types';
 import { useState } from 'react';
 type TabsProps = {
     tabs: TabItem[]
@@ -18,12 +18,13 @@ export const Tabs = ({ tabs }: TabsProps) => {
                                 ? 'border-b-2 border-black text-black'
                                 : 'text-gray-400'
                             }
-              transition-all`}
+                            transition-all`}
                     >
                         {tab.label}
                     </button>
                 ))}
             </div>
+            <div className="content">{tabs[activeTab].content}</div>
         </div>
     )
 }
