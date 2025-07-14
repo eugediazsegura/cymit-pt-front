@@ -9,7 +9,8 @@
    --color-yellow: #DE5170;
    --color-white: #FFFFFF;
    --color-black: #000000;
-   --font-gabarito: Gabarito, sans-serif
+   --font-gabarito: Gabarito, sans-serif;
+   --color-modal-background: #00000080;
    /** rgb(0.72 0.11 178); */ 
 }
 

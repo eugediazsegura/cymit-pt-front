@@ -1,17 +1,30 @@
-import heart from "@/assets/icons/heart-wishlist.svg"
+import emptyHeart from "@/assets/icons/heart-wishlist.svg"
+import fillHeart from "@/assets/icons/heart-wishlist-fill.svg"
 import type { Product } from '@/types'
 import { formatDiscountedPrice } from "@/features/products/utils"
+import { useCart } from "@/hooks/useCart"
+import { useFavs } from "@/hooks/useFavs"
 
 type ProductCardProps = {
     product: Product
-    addToCart: (item: Product) => void
 }
 
-export const ProductCard = ({ product, addToCart }: ProductCardProps) => {
+export const ProductCard = ({ product }: ProductCardProps) => {
+    const { addToCart } = useCart();
+    const { addToFavs, removeFromFavs, favs } = useFavs();
+    const handleFavorite = () => {
+        product.favorite = !product.favorite
+        if (product.favorite) {
+            addToFavs(product)
+        } else {
+            removeFromFavs(product.id)
+        }
+    }
+    product.favorite = favs.some(fav => fav.id === product.id)
     return (
         <div className="flex flex-col items-center product-card relative lg:hover:bg-purple-ultralight rounded-2xl p-3 group">
             <div className="wishlist-icon opacity-0 group-hover:opacity-100 absolute top-5 right-5">
-                <button><img src={heart} alt="wishlist icon" /></button>
+                <button><img src={product.favorite ? fillHeart : emptyHeart} data-favorite={product.favorite} alt="wishlist icon" onClick={handleFavorite} /></button>
             </div>
             {product.discountPercentage > 10 && (
                 <div className="float-discount bg-pink-light rounded-full w-8 h-8 flex items-center justify-center absolute top-px left-px">
@@ -27,6 +40,7 @@ export const ProductCard = ({ product, addToCart }: ProductCardProps) => {
                 </div>
                 <p className="min-h-[4rem] text-sm/4 md:text-base/4 py-4">{product.title}</p>
                 <p className="text-xl font-bold text-pink-light py-2">€{product.price}</p>
+                <button onClick={() => addToCart(product)} className="bg-pink-light text-white py-2 rounded-full w-full hover:bg-pink-dark">Add to cart</button>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import { Header } from "./Header"
 import { Footer } from "./Footer"
+import { ModalProvider } from "../providers/ModalProvider"
 
 type Props = {
     children: React.ReactNode
@@ -12,5 +13,6 @@ export default function MainLayout({ children }: Props) {
                 {children}
             </main>
             <Footer />
+            <ModalProvider />
         </div>)
 }
