@@ -5,11 +5,12 @@ interface ModalCartProps {
     onClose: () => void
 }
 export default function ModalFavorites({ onClose }: ModalCartProps) {
+    void onClose;
     const { favs, removeFromFavs } = useFavs()
     return (
         <div className="bg-white p-6 rounded-md shadow-md w-[100vw] md:w-[400px] max-h-[90vh] overflow-y-auto z-60">
             {favs.length === 0 ? (
-                <p>No hay productos favoritos</p>
+                <p>There are no favorite products.</p>
             ) : (
 
                 <ul className="space-y-3">

@@ -45,6 +45,7 @@ export const CategoriesFilter = () => {
                                 name="category"
                                 id={category.id}
                                 value={category.url}
+                                role="radio"
                                 onChange={(e) => handleCategoryFilter(e, category)}
                                 className="mr-2 accent-purple-dark " />
                             <label htmlFor="category">{category.name}</label>

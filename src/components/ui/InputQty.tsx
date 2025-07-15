@@ -1,5 +1,4 @@
 import { useCart } from '@/hooks/useCart';
-import type { CartItem } from '@/types';
 import React from 'react'
 
 type InputQtyProps = {

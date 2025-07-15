@@ -19,12 +19,6 @@ export const ProductPageContent = () => {
             { name: 'Weight', value: `${productComplete?.weight} kg` },
         ];
     }
-    const getReviewsRows = () => {
-        return [
-            { name: 'Ratings', value: `${productComplete?.rating}` },
-            { name: "Reviews", value: `${productComplete?.reviews}` },
-        ];
-    }
 
     const getAdditionalInfoRows = () => {
         return [
@@ -40,7 +34,7 @@ export const ProductPageContent = () => {
                 <div className='image-product border-2 border-purple-light rounded-2xl lg:w-1/2 mt-4 mb-6'>
                     <img src={
                         productComplete?.images[0]
-                    }></img>
+                    } alt={productComplete?.title}></img>
                 </div>
                 <div className='product-info-container flex flex-col lg:w-1/2 lg:m-20'>
                     <p className='text-sm text-gray-500'>{productComplete?.category}</p>

@@ -1,28 +1,19 @@
 import TrashBinIcon from "@/assets/icons/trashbin.svg";
 import { IconButton } from "@/components/ui/IconButton";
 import { useCart } from "@/hooks/useCart";
-import { InputQty } from "../ui/inputQty";
-interface ModalCartProps {
+import { InputQty } from "../ui/InputQty";
+
+type ModalCartProps = {
     onClose: () => void
 }
 export default function ModalCart({ onClose }: ModalCartProps) {
-    const { removeFromCart, cart, cartTotal, increaseQuantity, decreaseQuantity, clearCart } = useCart();
-    const onQtyChange = (e: React.ChangeEvent<HTMLInputElement>, currentQty: number, productId: number) => {
-        const value = parseInt(e.target.value) || 0;
-        if (value == 0) {
-            removeFromCart(currentQty);
-        }
-        if (value > currentQty) {
-            increaseQuantity(productId);
-        }
-        if (value < currentQty) {
-            decreaseQuantity(productId);
-        }
-    }
+    void onClose;
+    const { removeFromCart, cart, cartTotal, clearCart } = useCart();
+
     return (
         <div className="bg-white p-6  rounded-md shadow-md w-[100vw] md:w-[400px] max-h-[90vh] overflow-y-auto z-60">
             {cart.length === 0 ? (
-                <p>No hay productos en el carrito.</p>
+                <p>There are no products in the cart.</p>
             ) : (
                 <>
                     <ul className="space-y-3">
