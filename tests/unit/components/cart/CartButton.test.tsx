@@ -13,6 +13,10 @@ describe('CartButton', () => {
         ; (mockUseModalStore as unknown as jest.Mock).mockReturnValue({ openModal })
     });
 
+    afterEach(() => {
+        jest.clearAllMocks()
+    })
+
     it('should call openModal when clicked', () => {
         const { getByRole } = render(<CartButton />);
         const button = getByRole('button');

@@ -38,7 +38,7 @@ export const ProductPageContent = () => {
                 <div className='image-product border-2 border-purple-light rounded-2xl w-1/2 mt-4 mb-6'>
                     <img src={
                         productComplete?.images[0]
-                    }></img>
+                    } alt={productComplete?.title}></img>
                 </div>
                 <div className='product-info-container flex flex-col w-1/2 m-20'>
                     <p className='text-sm text-gray-500'>{productComplete?.category}</p>

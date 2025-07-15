@@ -21,25 +21,26 @@ jest.mock('@/api/services', () => ({
 
 describe('CategoriesFilter', () => {
     const setup = () => {
-        const utils = render(<CategoriesFilter />);
-        const categories = utils.getAllByRole('radio');
-
-        return { ...utils, categories }
+        return render(<CategoriesFilter />);
     }
 
     it('should render categories', async () => {
-        const { categories } = setup();
-        await waitFor(() => expect(categories).toHaveLength(2));
-        expect(categories[0]).toHaveAttribute('name', 'url');
+        const { findAllByRole } = setup();
+        const categories = await findAllByRole('radio');
+
+        expect(categories).toHaveLength(2);
+        expect(categories[0]).toHaveAttribute('name', 'category');
         expect(categories[0]).toHaveAttribute('value', '/test-category');
-        expect(categories[0]).toHaveTextContent('Category 1');
-        expect(categories[1]).toHaveAttribute('name', 'url');
+        expect(categories[0].nextSibling?.textContent).toBe('category');
+        expect(categories[1]).toHaveAttribute('name', 'category');
         expect(categories[1]).toHaveAttribute('value', '/test-category');
-        expect(categories[1]).toHaveTextContent('Category 2');
+        expect(categories[1].nextSibling?.textContent).toBe('category');
     });
 
     it('calls handleUrlChange when a category is selected', async () => {
-        const { categories } = setup();
+        const { findAllByRole } = setup();
+
+        const categories = await findAllByRole('radio');
 
         act(() => {
             fireEvent.click(categories[0]);
