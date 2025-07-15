@@ -20,6 +20,10 @@ const GET = async (url: string, type: string) => {
 }
 
 class Product {
+    all = async () => {
+        const response = await GET(`${API_URL}/products?limit=0`, "all");
+        return response;
+    }
     paginated = async (page: number, limit: number, url?: string) => {
         const skip = (page - 1) * limit;
         const fetchUrl = url ? url : `${API_URL}/products`;
@@ -32,6 +36,10 @@ class Product {
     }
     single = async (id: string) => {
         const response = await GET(`${API_URL}/products/${id}`, "single");
+        return response;
+    }
+    relatedProducts = async (category: string) => {
+        const response = await GET(`${API_URL}/products/category/${category}`, "related");
         return response;
     }
 }
