@@ -8,11 +8,13 @@ type TextTabProps = {
 
 export const TextTab = ({ row }: TextTabProps) => {
     return (
-        row.map(({ name, value }) => (
-            <div className={`flex flex-col`} key={`tab-${name}`}>
-                <h3 className="text-md font-bold">{name}</h3>
-                <p className="text-md text-gray-500">{value}</p>
-            </div>
-        ))
+        <div className="flex flex-col my-8">
+            {row.map((item, index) => (
+                <div key={index} className={`${index % 2 === 0 ? 'bg-purple-ultralight' : 'bg-white'} p-2 my-3 flex flex-row justify-between lg:w-full `}>
+                    <p className="text-sm font-bold">{item.name}</p>
+                    <p className="text-sm">{item.value}</p>
+                </div>
+            ))}
+        </div>
     )
 }
