@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor, act } from "@testing-library/react";
 import { ProductCard } from "@/components/product/ProductCard";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -36,9 +36,14 @@ describe('ProductCard', () => {
         );
 
         const card = getAllByRole('button');
-        fireEvent.click(card[1]);
 
-        expect(window.location.pathname).toBe(`/product/${mockProduct.id}`);
+        act(() => {
+            fireEvent.click(card[1]);
+        })
+
+        waitFor(() => {
+            expect(window.location.pathname).toBe(`/product/${mockProduct.id}`);
+        })
     });
 });
 

@@ -7,6 +7,11 @@ jest.mock('@/store/ProductStore', () => ({
     useProductStore: jest.fn(),
 }));
 
+jest.mock("@/components/product/RelatedProducts", () => ({
+    __esModule: true,
+    RelatedProducts: () => <div data-testid="related-products-component" />,
+}));
+
 describe('ProductPageContent', () => {
     const mockProductComplete = {
         title: 'Test Product',
@@ -90,21 +95,18 @@ describe('ProductPageContent', () => {
             </Router>
         );
 
-        // Por defecto muestra dimensiones
+
         expect(getByText('10 cm')).toBeInTheDocument();
         expect(getByText('20 cm')).toBeInTheDocument();
         expect(getByText('5 cm')).toBeInTheDocument();
         expect(getByText('1.5 kg')).toBeInTheDocument();
 
-        // Cambiá a la tab "Additional information"
         fireEvent.click(getByText('Additional information'));
 
-        // Ahora debe mostrar info adicional
         expect(getByText('30 days return')).toBeInTheDocument();
         expect(getByText('Free shipping')).toBeInTheDocument();
         expect(getByText('2 years warranty')).toBeInTheDocument();
 
-        // Las dimensiones ya no deberían estar
         expect(queryByText('10 cm')).not.toBeInTheDocument();
     });
 });

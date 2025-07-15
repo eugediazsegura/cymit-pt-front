@@ -19,12 +19,6 @@ export const ProductPageContent = () => {
             { name: 'Weight', value: `${productComplete?.weight} kg` },
         ];
     }
-    const getReviewsRows = () => {
-        return [
-            { name: 'Ratings', value: `${productComplete?.rating}` },
-            { name: "Reviews", value: `${productComplete?.reviews}` },
-        ];
-    }
 
     const getAdditionalInfoRows = () => {
         return [
