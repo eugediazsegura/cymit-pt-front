@@ -1,3 +1,4 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import SearchIcon from '@/assets/icons/search.svg'
 import { useProductStore } from '@/store/ProductStore'
 import API from "@/api/services";
@@ -8,8 +9,14 @@ import { useState } from 'react';
 export const SearchBar = () => {
     const { setProducts, setProductTotal } = useProductStore();
     const [query, setQuery] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSearch = async () => {
+        if (location.pathname !== '/') {
+            navigate('/');
+
+        }
         if (!query.trim()) return;
         const response = await API.Product.search(query);
         setProducts(response.products);

@@ -20,7 +20,6 @@ export type CartItem = Product & {
     quantity: number;
 };
 
-
 export type ProductComplete = Product & {
     availabilityStatus: string;
     brand: string;
@@ -63,6 +62,6 @@ export type Review = {
 }
 
 export type TabItem = {
-  label: string;
-  content: React.ReactNode;
+    label: string;
+    content: React.ReactNode;
 };

@@ -7,6 +7,7 @@ import { useProductStore } from '@/store/ProductStore'
 import type { ProductComplete } from '@/types'
 import { TextTab } from '../ui/TextTab'
 import { Reviews } from '../ui/Reviews'
+import { RelatedProducts } from './RelatedProducts'
 export const ProductPageContent = () => {
     const { productComplete } = useProductStore() as { productComplete: ProductComplete };
     const getDescriptionRows = () => {
@@ -65,6 +66,7 @@ export const ProductPageContent = () => {
                     { label: 'Additional information', content: <TextTab row={getAdditionalInfoRows()} /> },
                 ]}></Tabs>
             </div>
+            <RelatedProducts />
         </div>
     )
 
