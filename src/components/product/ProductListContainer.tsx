@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import API from "@/api/services";
 import { useProductStore } from "@/store/ProductStore";
-import { useCategoriesStore } from "@/store/CategoriesStore";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { ProductCard } from "@/components/product/ProductCard";
 import { ButtonSecondary } from "@/components/ui/ButtonSecondary";
@@ -18,16 +17,14 @@ export const ProductListContainer = () => {
         visibleProducts,
         setProducts,
         setLoading,
-        setPage,
         setProductTotal,
         setVisibleProducts } = useProductStore();
-
-    const { selectedCategory } = useCategoriesStore();
 
     const fetchProducts = async () => {
         setLoading(true);
         const response = await API.Product.paginated(page, 16);
         setProducts(response.products);
+        setVisibleProducts(page * 16);
         setProductTotal(response.total);
         setLoading(false);
 
@@ -36,16 +33,6 @@ export const ProductListContainer = () => {
     useEffect(() => {
         fetchProducts();
     }, []);
-
-    const handleLoadMore = async () => {
-        setLoading(true);
-        const nextPage = page + 1;
-        const response = await API.Product.paginated(nextPage, 16, selectedCategory?.url);
-        setProducts([...products, ...response.products]);
-        setVisibleProducts(nextPage * 16);
-        setPage(nextPage);
-        setLoading(false);
-    };
 
     return (
         <div className="flex flex-col ">
@@ -82,7 +69,7 @@ export const ProductListContainer = () => {
                     </div>
                 </div>
                 {products.length > 0 && visibleProducts < productTotal && (
-                    <ButtonSecondary onClick={handleLoadMore} data="View more products" />
+                    <ButtonSecondary data="View more products" />
                 )}
             </div>
         </div>
