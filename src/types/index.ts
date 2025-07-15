@@ -31,12 +31,6 @@ export type ProductComplete = Product & {
         width: number;
     };
     images: string[];
-    meta: {
-        createdAt: string;
-        updatedAt: string;
-        barcode: string;
-        qrCode: string;
-    };
     minimumOrderQuantity: number;
     price: number;
     rating: number;

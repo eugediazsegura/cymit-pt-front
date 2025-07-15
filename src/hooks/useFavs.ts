@@ -1,4 +1,4 @@
-import {  useEffect, useMemo } from 'react'
+import {  useEffect } from 'react'
 import type { Product } from '@/types'
 import { useFavsStore } from '@/store/FavsStore'
 
