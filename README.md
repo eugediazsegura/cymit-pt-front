@@ -88,3 +88,5 @@ App disponible en http://localhost:8010
 
 
 [Ver prototipo en Figma](https://www.figma.com/design/hBLWmYp5DAVRLMqZIVSqmP/Frontend-Scent-Home-Ecommerce?node-id=0-1&t=2LLgYxtxfvvsGZs9-1)
+
+[Ver documentacion explicativa en Notion](https://www.notion.so/eCommerce-SPA-231fed8b0b458016a4b6dd4ace4addc4)
