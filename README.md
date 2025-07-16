@@ -43,7 +43,7 @@ src/
 	├── filters/      # Search, Reviews, Categories
 	├── layout/       # Header, Footer, Sidebar
 	├── modals/       # Modales de carrito, favoritos y filter(mobile)
-	├── modals/        Componentes afines a producto
+	├── modals/       # Componentes afines a producto
 	├── provider/     # Modal que se proporciona de acuerdo al requerimiento.
 	├── ui/           # Componentes atómicos. (buttons, labels, banner, íconos)
 	└── user/         # Botones wishlist y user.		
