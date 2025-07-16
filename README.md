@@ -55,3 +55,4 @@ librerías elegidas, patrones seguidos, etc.).
 Esta es una prueba técnica deliveradamente sencilla para que te puedas centrar en aquello que consideres que son tus puntos fuertes.
 ¡Buena suerte y gracias! 🙌
 
+
