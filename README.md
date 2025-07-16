@@ -37,7 +37,7 @@ src/
 ├── store/                # Zustand stores (productos, modal, categorías)
 ├── styles/               # Tailwind + custom styles
 ├── types/                # Tipos TS
-├── assets/               #Imagenes e íconos
+├── assets/               # Imagenes e íconos
 ├── App.tsx, main.tsx     # Entradas de la app
 └── components/           # Componentes UI (Inputs, Botones, ProductCard, Modal, etc.)
 	├── filters/      # Search, Reviews, Categories
@@ -90,3 +90,5 @@ App disponible en http://localhost:8010
 [Ver prototipo en Figma](https://www.figma.com/design/hBLWmYp5DAVRLMqZIVSqmP/Frontend-Scent-Home-Ecommerce?node-id=0-1&t=2LLgYxtxfvvsGZs9-1)
 
 [Ver documentacion explicativa en Notion](https://www.notion.so/eCommerce-SPA-231fed8b0b458016a4b6dd4ace4addc4)
+
+[Ver demo](https://687728d991e0bc8244e6f029--thriving-alfajores-d9e94b.netlify.app/)
