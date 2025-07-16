@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const GET = async (url: string, type: string) => {
+const GET = async (url: string, _type: string) => {
     try {
         const response = await axios.get(url);
         if (response.status !== 200) {
