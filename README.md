@@ -64,7 +64,6 @@ cd cymit-pt-front
 npm install
 npm run dev
 ```
-La app corre en: http://localhost:5173
 
 ### Opción 2: Docker 
 
